@@ -1,20 +1,27 @@
 import numpy
 import csv
 
-## inicialice las variables con los valores correspondientes
+## Inicializacion de las constantes de las resistencias de los materiales 1 y 2
 RESISTENCIA_1 = 1
 RESISTENCIA_2 = 1
 
+## inicializacion de la longitud de la pieza
 LONGITUD = 1
+
+## Inicializacion de los modulos de elasticidad de los materiales 1 y 2
 ELASTICIDAD_1 = 1
 ELASTICIDAD_2 = 1
+
+## Inicializacion de las areas transversales de los materiales 1 y 2
 AREA_TRANSVERSAL_1 = 1
 AREA_TRANSVERSAL_2= 1
 
-incrementos = [x for x in numpy.arange(0, 0.05*26, 0.05)]
+## Inicializacion de lista de incrementos
+incremento = 0.05
+numero_de_valores = 25
+incrementos = [x for x in numpy.arange(0, incremento * numero_de_valores, incremento)]
 
-# informacion = [["carga maxima"], ["esfuerzo maximo"]]
-
+## inicializacion del diccionario para almacenar la informacion.
 informacion = {
     "carga_maxima":[],
     "deformacion_maxima": [],
@@ -23,7 +30,7 @@ informacion = {
     "esfuerzo_residual_2": [],
 }
 
-
+## iteracion en el numero de valores seleccionado
 for incremento in incrementos:
     
     deformacion_maxima = incremento * RESISTENCIA_2 * (LONGITUD/ELASTICIDAD_2)
@@ -66,18 +73,18 @@ for incremento in incrementos:
 
 
 # Definir el nombre del archivo CSV
-filename = 'datos.csv'
+archivo = 'datos.csv'
 
 # Abrir el archivo CSV en modo escritura
-with open(filename, 'w', newline='') as f:
+with open(archivo, 'w', newline='') as f:
 
     # Crear un objeto writer de CSV
-    writer = csv.writer(f)
+    escribir = csv.writer(f)
 
     # Escribir las cabeceras (nombres de las columnas)
-    writer.writerow(informacion.keys())
+    escribir.writerow(informacion.keys())
 
     # Escribir los datos del diccionario
-    writer.writerows(zip(*informacion.values()))
+    escribir.writerows(zip(*informacion.values()))
     
 print("finalizado")
