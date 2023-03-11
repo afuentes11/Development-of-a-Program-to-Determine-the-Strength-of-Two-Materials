@@ -1,6 +1,8 @@
 # Development-of-a-Program-to-Determine-the-Strength-of-Two-Materials
+## Description
+Program to determine the maximum load, the maximum normal stress, the permanent deformation and the residual stress of a part made of two different materials subjected to an axial load
 
-### Instructions
+## Instructions
 #### Windows
 ```vbnet
 REM Clone the repository on your computer
