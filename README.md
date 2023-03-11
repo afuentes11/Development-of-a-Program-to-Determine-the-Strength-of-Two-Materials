@@ -1,6 +1,36 @@
 # Development-of-a-Program-to-Determine-the-Strength-of-Two-Materials
 
 ### Instructions
+#### Windows
+```vbnet
+REM Clone the repository on your computer
+git clone https://github.com/afuentes11/Development-of-a-Program-to-Determine-the-Strength-of-Two-Materials.git
+
+REM Enter the folder
+cd Development-of-a-Program-to-Determine-the-Strength-of-Two-Materials
+
+REM Create a virtual environment with python
+py -m venv venv
+
+REM Activate the virtual environment
+.\venv\Scripts\activate
+
+REM Install the libraries from the requirements file
+pip install -r requirements.txt
+
+REM Finished 
+```
+
+Following this configuration you will be able to run the main.py file without any problem.
+
+ - The following command is used to deactivate the virtual environment
+```vbnet
+
+.\venv\Scripts\deactivate
+
+```
+
+#### Linux
 ```bash
 # Clone the repository on your computer
 git clone https://github.com/afuentes11/Development-of-a-Program-to-Determine-the-Strength-of-Two-Materials.git
@@ -12,13 +42,19 @@ cd Development-of-a-Program-to-Determine-the-Strength-of-Two-Materials
 py -m venv venv
 
 # Activate the virtual environment
-.\venv\Scripts\activate
+source venv/bin/activate
 
 # Install the libraries from the requirements file
 pip install -r requirements.txt
 
-# Following this configuration you will be able to run the main.py file without any problem.
+# Finished 
+```
 
-# The following command is used to deactivate the virtual environment
-.\venv\Scripts\deactivate
+Following this configuration you will be able to run the main.py file without any problem.
+
+ - The following command is used to deactivate the virtual environment
+```vbnet
+
+source venv/bin/deactivate
+
 ```
