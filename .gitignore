@@ -1,0 +1,21 @@
+# Archivos generados por el intérprete de Python
+__pycache__/
+*.pyc
+
+# Archivos generados por el entorno virtual
+venv/
+*.pyc
+
+# Dependencias instaladas con pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Entorno de desarrollo local
+.env
+.vscode/
+*.sqlite3
+
+# Otros archivos y carpetas
+.DS_Store
+*.log
+*.swp
