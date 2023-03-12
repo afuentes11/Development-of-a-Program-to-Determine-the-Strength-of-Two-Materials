@@ -60,3 +60,5 @@ Following this configuration you will be able to run the main.py file without an
 source venv/bin/deactivate
 
 ```
+
+P.S. The code was requested in Spanish.
