@@ -1,25 +1,43 @@
 import numpy
 import csv
 
-def calculate():
+def calcular_valores(inicializacion_de_variables: dict) -> dict:
+    """
+    Calcula la carga máxima, la tensión normal máxima, la deformación permanente y la tensión residual de una pieza de dos 
+    materiales diferentes sometida a una carga axial para diferentes valores de incremento.
+
+    Retorna un diccionario con los siguientes valores:
+    - carga_maxima (list): una lista con los valores de carga máxima obtenidos para cada incremento.
+    - deformacion_maxima (list): una lista con los valores de deformación máxima obtenidos para cada incremento.
+    - deformacion_permanente (list): una lista con los valores de deformación permanente obtenidos para cada incremento.
+    - esfuerzo_residual_1 (list): una lista con los valores de esfuerzo residual del material 1 obtenidos para cada incremento.
+    - esfuerzo_residual_2 (list): una lista con los valores de esfuerzo residual del material 2 obtenidos para cada incremento.
+
+    Parámetros:
+    - inicializacion_de_variables (dict): un diccionario que contiene los valores iniciales para las variables de entrada. 
+
+    Retorno:
+    Un diccionario con los valores calculados para cada incremento.
+    """
+    
     ## Inicializacion de las constantes de las resistencias de los materiales 1 y 2
-    RESISTENCIA_1 = 1
-    RESISTENCIA_2 = 1
+    RESISTENCIA_1 = inicializacion_de_variables["material_1"]["resistencia"]
+    RESISTENCIA_2 = inicializacion_de_variables["material_2"]["resistencia"]
 
     ## inicializacion de la longitud de la pieza
-    LONGITUD = 1
+    LONGITUD = inicializacion_de_variables["pieza"]["longitud"]
 
     ## Inicializacion de los modulos de elasticidad de los materiales 1 y 2
-    ELASTICIDAD_1 = 1
-    ELASTICIDAD_2 = 1
+    ELASTICIDAD_1 = inicializacion_de_variables["material_1"]["elasticidad"]
+    ELASTICIDAD_2 = inicializacion_de_variables["material_2"]["elasticidad"]
 
     ## Inicializacion de las areas transversales de los materiales 1 y 2
-    AREA_TRANSVERSAL_1 = 1
-    AREA_TRANSVERSAL_2= 1
+    AREA_TRANSVERSAL_1 = inicializacion_de_variables["material_1"]["area_transversal"]
+    AREA_TRANSVERSAL_2= inicializacion_de_variables["material_2"]["area_transversal"]
 
     ## Inicializacion de lista de incrementos
-    incremento = 0.05
-    numero_de_valores = 25
+    incremento = inicializacion_de_variables["metadata"]["incremento"]
+    numero_de_valores = inicializacion_de_variables["metadata"]["numero_de_valores"]
     incrementos = [x for x in numpy.arange(0, incremento * numero_de_valores, incremento)]
 
     ## inicializacion del diccionario para almacenar la informacion.
@@ -70,11 +88,22 @@ def calculate():
         informacion["deformacion_permanente"].append(deformacion_permanente)
         informacion["esfuerzo_residual_1"].append(esfuerzo_residual_1)
         informacion["esfuerzo_residual_2"].append(esfuerzo_residual_2)
+        
+    return informacion
 
+def generar_CSV(informacion: dict, nombre_archivo_csv:str ="datos") -> None:
+    """
+    Genera un archivo CSV a partir de una diccionario de información.
 
+    Parámetros:
+    informacion (dict): un diccionario de información que se agregará al archivo CSV.
+    nombre_del_archivo (str): el nombre del archivo CSV que se generará. Por defecto es "datos".
 
+    Retorno:
+    None
+    """
     # Definir el nombre del archivo CSV
-    archivo = 'datos.csv'
+    archivo = f'{nombre_archivo_csv}.csv'
 
     # Abrir el archivo CSV en modo escritura
     with open(archivo, 'w', newline='') as f:
