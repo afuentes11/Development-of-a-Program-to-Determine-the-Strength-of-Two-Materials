@@ -57,7 +57,7 @@ Following this configuration you will be able to run the main.py file without an
  - The following command is used to deactivate the virtual environment
 ```vbnet
 
-source venv/bin/deactivate
+deactivate
 
 ```
 
